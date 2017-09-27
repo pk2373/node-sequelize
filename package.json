@@ -1,13 +1,13 @@
 {
-    "name": "hello-koa2",
+    "name": "model-sequelize",
     "version": "1.0.0",
-    "description": "Hello Koa 2 example with async",
+    "description": "Sequelize best practice example with async",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js"
+        "start": "node --use_strict app.js"
     },
     "keywords": [
-        "koa",
+        "sequelize",
         "async"
     ],
     "author": "Michael Liao",
@@ -17,7 +17,6 @@
         "url": "https://github.com/michaelliao/learn-javascript.git"
     },
     "dependencies": {
-        "koa": "^2.0.0",
         "sequelize": "3.24.1",
         "mysql": "2.11.1"
     }
