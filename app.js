@@ -1,29 +1,35 @@
 const model = require('./model');
 
+// model.sync(); //自动建表 清空表
 let
-    // Pet = model.Pet,
+    Pet = model.Pet,
     User = model.User;
 
 (async () => {
+
     var user = await User.create({
         name: 'John',
         gender: 0,
         email: 'john-' + Date.now() + '@garfield.pet',
         passwd: 'hahaha'
     });
-    console.log('created: ' + JSON.stringify(user));
-/*    var cat = await Pet.create({
+
+    await Pet.create({
         ownerId: user.id,
         name: 'Garfield',
-        gender: false,
+        gender: 1,
         birth: '2007-07-07',
     });
-    console.log('created: ' + JSON.stringify(cat));
-    var dog = await Pet.create({
-        ownerId: user.id,
-        name: 'Odie',
-        gender: false,
-        birth: '2008-08-08',
+
+    var pets = await Pet.findAll({
+        where: {
+            name: 'Garfield'
+        }
     });
-    console.log('created: ' + JSON.stringify(dog));*/
+    for (let p of pets) {
+        p.name = 2;
+        await p.save();
+    }
+
+
 })();
