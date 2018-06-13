@@ -1,17 +1,19 @@
 {
     "scripts": {
-        "start": "cross-env NODE_ENV=test node --use_strict app.js"
+        "start": "cross-env NODE_ENV=test node --use_strict start.js",
+        "test": "mocha"
     },
     "dependencies": {
         "koa-bodyparser": "^4.2.1",
         "koa-router": "^7.4.0",
         "koa2": "^2.0.0-alpha.7",
         "mysql2": "^1.5.3",
+        "mz": "^2.7.0",
         "node-uuid": "^1.4.8",
-        "sequelize": "^4.37.10",
-        "uuid": "^3.2.1"
+        "sequelize": "^4.37.10"
     },
     "devDependencies": {
-        "cross-env": "^5.1.6"
+        "cross-env": "^5.1.6",
+        "mocha": "^5.2.0"
     }
 }

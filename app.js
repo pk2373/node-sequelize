@@ -1,35 +1,22 @@
-const model = require('./model');
+const Koa = require('koa2');
 
-// model.sync(); //自动建表 清空表
-let
-    Pet = model.Pet,
-    User = model.User;
+const bodyParser = require('koa-bodyparser');
 
-(async () => {
+const controller = require('./controller');
 
-    var user = await User.create({
-        name: 'John',
-        gender: 0,
-        email: 'john-' + Date.now() + '@garfield.pet',
-        passwd: 'hahaha'
-    });
+const app = new Koa();
 
-    await Pet.create({
-        ownerId: user.id,
-        name: 'Garfield',
-        gender: 1,
-        birth: '2007-07-07',
-    });
+// log request URL:
+app.use(async (ctx, next) => {
+  console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
+  await next();
+});
 
-    var pets = await Pet.findAll({
-        where: {
-            name: 'Garfield'
-        }
-    });
-    for (let p of pets) {
-        p.name = 2;
-        await p.save();
-    }
+// parse request body:
+app.use(bodyParser());
 
+// add controllers:
+app.use(controller());
 
-})();
+module.exports = app;
+
