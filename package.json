@@ -7,6 +7,7 @@
         "koa-bodyparser": "^4.2.1",
         "koa-router": "^7.4.0",
         "koa2": "^2.0.0-alpha.7",
+        "koa2-cors": "^2.0.5",
         "mysql2": "^1.5.3",
         "mz": "^2.7.0",
         "node-uuid": "^1.4.8",
